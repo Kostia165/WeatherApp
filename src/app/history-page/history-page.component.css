@@ -1,0 +1,35 @@
+.history_block {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    border-left: 1px solid rgb(197, 201, 197);
+    border-right: 1px solid rgb(197, 201, 197);
+    border-top: 0px;
+    border-bottom: 0px;
+    padding: 10px;
+    min-height: 97vh;
+    background-color: white;
+    min-width: 300px;
+}
+
+.history_header {
+    align-self: center;
+    margin-top: 15px;
+}
+
+.empty_title {
+    color: rgb(185, 182, 182);
+    align-self: center;
+}
+
+.data-image {
+    width:50px;
+}
+
+.left-data-block {
+    float: left;
+}
+
+.right-data-block {
+    float: right;
+}

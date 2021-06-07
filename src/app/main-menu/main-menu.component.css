@@ -1,0 +1,25 @@
+#menu_image {
+    width: 230px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#main_title {
+    text-shadow:5px -2px rgb(209, 209, 221);
+    font-size: 4em;
+}
+
+.main_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-left: 1px solid rgb(197, 201, 197);
+    border-right: 1px solid rgb(197, 201, 197);
+    border-top: 0px;
+    border-bottom: 0px;
+    padding: 10px;
+    min-height: 97vh;
+    background-color: white;
+    min-width: 300px;
+}

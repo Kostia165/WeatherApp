@@ -1,0 +1,30 @@
+<div class="search_block">
+    <button mat-icon-button color="primary" aria-label="Button to return" (click)="backClicked()">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <form class="form-container" [formGroup]="findWeatherForm" (ngSubmit)="findWeather()">
+        <h2 class="form-header">Search page</h2>
+        <mat-form-field appearance="outline">
+            <mat-label>Countries</mat-label>
+            <mat-select formControlName="countries">
+              <mat-option value="" selected></mat-option>
+              <mat-option *ngFor="let country of countriesList" [value]="country" (onSelectionChange)="getCities($event, country)">{{country}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Cities</mat-label>
+            <mat-select formControlName="cities">
+              <mat-option value="" selected></mat-option>
+              <mat-option *ngFor="let city of citiesList" [value]="city">{{city}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button class="find_button" mat-stroked-button [disabled]="findWeatherForm.invalid">Find</button>
+    </form>
+    <div class="weather-data-block">
+        <h1>Data</h1>
+        <p *ngIf="!isLoading">Temperature: {{ weatherData != null ? weatherData.main.temp : '...' }} C</p>
+        <p *ngIf="!isLoading">Humidity: {{ weatherData != null ? weatherData.main.humidity : '...' }}</p>
+        <img class="data-image" *ngIf="!isLoading && weatherData" src="http://openweathermap.org/img/wn/{{ weatherData != null ? weatherData.weather[0].icon : ''}}@2x.png">
+        <mat-progress-bar class="data-progressbar" *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+    </div>
+</div>

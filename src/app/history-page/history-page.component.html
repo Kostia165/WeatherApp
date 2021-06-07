@@ -1,0 +1,28 @@
+<div class="history_block">
+    <div>
+        <button class="left-data-block" mat-icon-button color="primary" aria-label="Button to return" (click)="backClicked()">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button class="right-data-block" mat-icon-button color="warn" aria-label="Clear history" (click)="clearHistory()" title="delete history">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    <h1 class="history_header">History</h1>
+    <p class="empty_title" *ngIf="listOfSearches.length == 0">Empty</p>
+    <mat-selection-list #historyItems [multiple]="false">
+        <mat-list-option *ngFor="let item of listOfSearches" [value]="listOfSearches.indexOf(item)">
+            <p>Time: {{ item.time_to_save || '' | date: 'medium' }}</p>
+            <p>City: {{ item.name }}[{{ item.sys.country }}]</p>
+        </mat-list-option>
+    </mat-selection-list>
+    <h1 class="history_header">Data</h1>
+    <div class="history-data-block">
+        <div class="left-data-block">
+            <p>Temperature: {{ listOfSearches[historyItems.selectedOptions.selected[0]?.value] != null ? listOfSearches[historyItems.selectedOptions.selected[0]?.value].main.temp : '...' }} C</p>
+            <p>Humidity: {{ listOfSearches[historyItems.selectedOptions.selected[0]?.value] != null ? listOfSearches[historyItems.selectedOptions.selected[0]?.value].main.humidity : '...' }}</p>
+        </div>
+        <div class="right-data-block">
+            <img class="data-image" *ngIf="listOfSearches[historyItems.selectedOptions.selected[0]?.value]" src="http://openweathermap.org/img/wn/{{ listOfSearches[historyItems.selectedOptions.selected[0]?.value] != null ? listOfSearches[historyItems.selectedOptions.selected[0]?.value].weather[0].icon : ''}}@2x.png">
+        </div>
+    </div>
+</div>
